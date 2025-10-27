@@ -1,0 +1,55 @@
+body {
+  background-image: url("images/Background_Stock.jpg");
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+  margin: 40px 0;
+  color: #000;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;            
+  flex-wrap: wrap;     
+  padding: 0 20px;
+}
+.console {
+  text-align: center;
+  width: 250px;
+}
+.console img {
+  width: 100%;          
+  height: 250px;         
+  object-fit: contain;     
+  border-radius: 10px;  
+  transition: transform 0.3s ease; 
+}
+.console img:hover {
+  transform: scale(1.05); 
+}
+.xbox {
+  color: #007000;
+}
+.playstation {
+  color: #0000D0;
+}
+.nintendo {
+  color: #FF0000;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .console {
+    width: 80%;
+    max-width: 300px;
+  }
+  .console img {
+    height: 200px;
+  }
+}
