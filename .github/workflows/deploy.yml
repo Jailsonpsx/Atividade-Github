@@ -1,29 +1,23 @@
-name: Deploy HTML no GitHub Pages
+name: Deploy no GitHub Pages
 
 on:
   push:
     branches:
-      - main   # dispara quando fizer push na branch main
+      - main  # ou o nome do seu branch principal
+
+permissions:
+  contents: write  # 🔥 dá permissão de escrita ao GITHUB_TOKEN
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Confere index.html na raiz
-        run: |
-          echo "Listando arquivos na raiz:"
-          ls -la
-          if [ ! -f "./index.html" ]; then
-            echo "ERRO: index.html não encontrado na raiz. Ajuste publish_dir no workflow."
-            exit 1
-          fi
-
-      - name: Publicar no GitHub Pages (branch gh-pages)
+      - name: Publicar no GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./
-          publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # ajuste se o index.html estiver em outra pasta
